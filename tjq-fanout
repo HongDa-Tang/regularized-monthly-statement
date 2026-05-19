@@ -1,0 +1,174 @@
+#!/bin/bash
+# tjq-fanout — generic M-input → N-output wrapper for tjq with lineage.
+#
+# Conforms to the tracing tools-spec CLI contract (--input DIR --output DIR).
+# Runs a jq filter via tjq that produces {filename, filedata} objects,
+# splits into per-file outputs, and splits the lineage accordingly.
+#
+# Convention: the jq filter MUST output one object per result with:
+#   { "filename": "<name>", "filedata": <json> }
+
+set -euo pipefail
+
+usage() {
+  echo "Usage: tjq-fanout --input <dir> --output <dir> -f <filter.jq> [tjq flags...]" >&2
+  exit 1
+}
+
+input_dir=""
+output_dir=""
+filter_file=""
+tjq_extra_args=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --input)  input_dir="$2"; shift 2 ;;
+    --output) output_dir="$2"; shift 2 ;;
+    -f)       filter_file="$2"; shift 2 ;;
+    *)        tjq_extra_args+=("$1"); shift ;;
+  esac
+done
+
+[[ -z "$input_dir" ]] && { echo "tjq-fanout: --input is required" >&2; usage; }
+[[ -z "$output_dir" ]] && { echo "tjq-fanout: --output is required" >&2; usage; }
+[[ -z "$filter_file" ]] && { echo "tjq-fanout: -f <filter.jq> is required" >&2; usage; }
+[[ ! -d "$input_dir" ]] && { echo "tjq-fanout: --input is not a directory: $input_dir" >&2; exit 2; }
+
+tjq="${TJQ:-tjq}"
+
+trace_tmp=$(mktemp -d)
+trap 'rm -rf "$trace_tmp"' EXIT
+
+mkdir -p "$output_dir"
+
+"$tjq" -c -s --trace-dir "$trace_tmp" -f "$filter_file" ${tjq_extra_args[@]+"${tjq_extra_args[@]}"} "$input_dir"/*.json \
+  > "$trace_tmp/raw_output.jsonl"
+
+index=0
+declare -a filenames
+while IFS= read -r line; do
+  fname=$(echo "$line" | jq -r '.filename')
+  if [[ "$fname" == "null" || -z "$fname" ]]; then
+    echo "tjq-fanout: output line $index missing .filename field" >&2
+    exit 2
+  fi
+  echo "$line" | jq '.filedata' > "$output_dir/$fname"
+  filenames+=("$fname")
+  index=$((index + 1))
+done < "$trace_tmp/raw_output.jsonl"
+
+n_outputs=${#filenames[@]}
+if [[ $n_outputs -eq 0 ]]; then
+  echo "tjq-fanout: filter produced no output" >&2
+  exit 2
+fi
+
+# Rewrite lineage: single artifacts/lineage.json with one maps[] entry per output file.
+# tjq wrote a single output.json and artifacts/lineage.json in trace_tmp.
+# When there are N results, lineage entries have output_path "/<i>/..." prefixes.
+# We group by index, strip the prefix + /filedata wrapper, and emit one map per output.
+python3 -c "
+import json, sys, os, hashlib
+
+trace_dir = sys.argv[1]
+output_dir = sys.argv[2]
+filenames = sys.argv[3:]
+n = len(filenames)
+
+lineage_path = os.path.join(trace_dir, 'artifacts', 'lineage.json')
+if not os.path.exists(lineage_path):
+    print('tjq-fanout: no lineage.json produced by tjq', file=sys.stderr)
+    sys.exit(2)
+
+with open(lineage_path) as f:
+    lineage = json.load(f)
+
+src_map = lineage.get('maps', [{}])[0]
+src_entries = src_map.get('entries', [])
+producing_stage = src_map.get('producing_stage', 'jq')
+
+FILEDATA_PREFIX = '/filedata'
+
+def sha256_file(path):
+    h = hashlib.sha256()
+    with open(path, 'rb') as f:
+        for chunk in iter(lambda: f.read(8192), b''):
+            h.update(chunk)
+    return 'sha256:' + h.hexdigest()
+
+def strip_filedata(raw_entries):
+    result = []
+    for entry in raw_entries:
+        op = entry.get('output_path', '')
+        if op == '/filename':
+            continue
+        if op == FILEDATA_PREFIX:
+            new_entry = dict(entry)
+            new_entry['output_path'] = ''
+            result.append(new_entry)
+        elif op.startswith(FILEDATA_PREFIX + '/'):
+            new_entry = dict(entry)
+            new_entry['output_path'] = op[len(FILEDATA_PREFIX):]
+            result.append(new_entry)
+        else:
+            result.append(entry)
+    return result
+
+if n == 1:
+    grouped = {0: src_entries}
+else:
+    grouped = {i: [] for i in range(n)}
+    for entry in src_entries:
+        op = entry.get('output_path', '')
+        if op.startswith('/'):
+            parts = op[1:].split('/', 1)
+            try:
+                idx = int(parts[0])
+                rest = '/' + parts[1] if len(parts) > 1 else ''
+                if idx < n:
+                    new_entry = dict(entry)
+                    new_entry['output_path'] = rest
+                    grouped[idx].append(new_entry)
+            except ValueError:
+                pass
+
+outputs = []
+maps = []
+for i, fname in enumerate(filenames):
+    out_path = os.path.join(output_dir, fname)
+    outputs.append({
+        'id': fname,
+        'kind': 'file',
+        'hash': sha256_file(out_path),
+    })
+    maps.append({
+        'output': fname,
+        'mapping_kind': 'item_to_item',
+        'producing_stage': producing_stage,
+        'entries': strip_filedata(grouped.get(i, [])),
+    })
+
+final_lineage = {
+    'schema_version': lineage.get('schema_version', '1.3'),
+    'tool': lineage.get('tool', 'tjq'),
+    'tool_version': lineage.get('tool_version', 'unknown'),
+    'tool_kind': lineage.get('tool_kind', 'deterministic'),
+    'inputs': lineage.get('inputs', []),
+    'outputs': outputs,
+    'maps': maps,
+}
+
+artifacts_dir = os.path.join(output_dir, 'artifacts')
+os.makedirs(artifacts_dir, exist_ok=True)
+with open(os.path.join(artifacts_dir, 'lineage.json'), 'w') as f:
+    json.dump(final_lineage, f, indent=2)
+
+for fname in filenames:
+    print(fname, file=sys.stderr)
+
+" "$trace_tmp" "$output_dir" "${filenames[@]}"
+
+# Write .tracing pointer at output root
+cat > "$output_dir/.tracing" << 'TRACING'
+{"pipeline":{"name":"tjq-fanout","locator":"path","stages":[{"name":"jq","reader":{"type":"json_path","pattern":"*.json"},"evidence":{"type":"item_to_item"}}]}}
+TRACING

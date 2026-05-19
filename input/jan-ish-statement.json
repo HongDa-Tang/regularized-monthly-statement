@@ -1,0 +1,580 @@
+{
+  "schema_version": "1.0.0",
+  "institution": {
+    "id": "fi_firstbank",
+    "name": "FirstBank",
+    "country": "US",
+    "identifiers": {}
+  },
+  "account": {
+    "id": "acct_7487",
+    "institution_id": "fi_firstbank",
+    "type": "DEPOSITORY",
+    "subtype": "SAFEKEEPING",
+    "currency": "USD",
+    "number_masked": "XXX-XXX-7487",
+    "holders": [
+      {
+        "name": "SOURCE SOUTH DBA JUSTPANELA",
+        "role": "PRIMARY",
+        "address": {
+          "raw": "6676 GUNPARK DR STE D, BOULDER CO 80301-3352",
+          "line1": "6676 GUNPARK DR STE D",
+          "city": "BOULDER",
+          "region": "CO",
+          "postal_code": "80301-3352",
+          "country": "US"
+        }
+      }
+    ]
+  },
+  "statements": [
+    {
+      "id": "stmt_2025-01-23",
+      "period": {
+        "start": "2024-12-20",
+        "end": "2025-01-23",
+        "statement_date": "2025-01-23",
+        "page_count": 2
+      },
+      "balances": {
+        "opening": {
+          "amount": 7461.23,
+          "date": "2024-12-19"
+        },
+        "closing": {
+          "amount": 1729.92,
+          "date": "2025-01-23"
+        },
+        "minimum": {
+          "amount": 1729.92,
+          "date": "2025-01-23"
+        },
+        "average": {
+          "amount": 7642
+        },
+        "average_collected": {
+          "amount": 7642
+        }
+      },
+      "totals": {
+        "deposits": {
+          "count": 7,
+          "amount": 21345.29
+        },
+        "withdrawals": {
+          "count": 24,
+          "amount": 27076.6
+        },
+        "fees_total": {
+          "amount": 102.0
+        }
+      },
+      "fees": [
+        {
+          "code": "ACH_DEBITS",
+          "description": "ACH DEBITS",
+          "count": 8,
+          "unit_cost": 0.2,
+          "subtotal": 1.6,
+          "charged": 0.0,
+          "waived": true
+        },
+        {
+          "code": "ACH_CREDITS",
+          "description": "ACH CREDITS",
+          "count": 5,
+          "unit_cost": 0.2,
+          "subtotal": 1.0,
+          "charged": 0.0,
+          "waived": true
+        },
+        {
+          "code": "INTERNET_BILL_PAY",
+          "description": "INTERNET BILL PAY FEE",
+          "charged": 10.0,
+          "waived": false
+        },
+        {
+          "code": "WIRE_OUT_FOREIGN",
+          "description": "OUTGOING WIRES - FOREIGN",
+          "count": 2,
+          "unit_cost": 45.0,
+          "subtotal": 90.0,
+          "charged": 90.0,
+          "waived": false
+        },
+        {
+          "code": "BUSINESS_VISA",
+          "description": "FIRSTBANK BUSINESS VISA CARD",
+          "count": 1,
+          "unit_cost": 2.0,
+          "subtotal": 2.0,
+          "charged": 2.0,
+          "waived": false
+        }
+      ],
+      "daily_balances": [
+        {
+          "date": "2024-12-20",
+          "balance": 7461.23
+        },
+        {
+          "date": "2024-12-23",
+          "balance": 7387.24
+        },
+        {
+          "date": "2024-12-24",
+          "balance": 10661.87
+        },
+        {
+          "date": "2024-12-26",
+          "balance": 10594.36
+        },
+        {
+          "date": "2024-12-27",
+          "balance": 13370.0
+        },
+        {
+          "date": "2024-12-30",
+          "balance": 4013.0
+        },
+        {
+          "date": "2024-12-31",
+          "balance": 10818.29
+        },
+        {
+          "date": "2025-01-02",
+          "balance": 8208.81
+        },
+        {
+          "date": "2025-01-06",
+          "balance": 8172.77
+        },
+        {
+          "date": "2025-01-07",
+          "balance": 6889.33
+        },
+        {
+          "date": "2025-01-08",
+          "balance": 6841.33
+        },
+        {
+          "date": "2025-01-14",
+          "balance": 8061.31
+        },
+        {
+          "date": "2025-01-15",
+          "balance": 6311.31
+        },
+        {
+          "date": "2025-01-17",
+          "balance": 6196.32
+        },
+        {
+          "date": "2025-01-21",
+          "balance": 1905.91
+        },
+        {
+          "date": "2025-01-22",
+          "balance": 1890.92
+        },
+        {
+          "date": "2025-01-23",
+          "balance": 1729.92
+        }
+      ],
+      "transactions": [
+        {
+          "id": "txn_001",
+          "posted_date": "2024-12-23",
+          "effective_date": "2024-12-21",
+          "amount": -14.99,
+          "description": "VISA IPOSTAL*RENEWAL IPOSTAL1.COM NY ON 12-21 9296",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "iPostal",
+            "website": "IPOSTAL1.COM"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_002",
+          "posted_date": "2024-12-23",
+          "effective_date": "2024-12-22",
+          "amount": -59.0,
+          "description": "VISA SQSP* INV162386256 HTTPSSQUARESP NY ON 12-22 9296 RECURRING PURCHASE",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "Squarespace",
+            "website": "HTTPSSQUARESP"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_003",
+          "posted_date": "2024-12-24",
+          "amount": -209.13,
+          "description": "INST XFER PAYPAL",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_004",
+          "posted_date": "2024-12-24",
+          "amount": 3483.76,
+          "description": "BILLS PAY GOOD EARTH NATUR",
+          "status": "POSTED",
+          "channel": "BILL_PAY",
+          "merchant": {
+            "name": "Good Earth Natural"
+          }
+        },
+        {
+          "id": "txn_005",
+          "posted_date": "2024-12-26",
+          "effective_date": "2024-12-25",
+          "amount": -67.51,
+          "description": "VISA INTUIT *QBooks Online CL.INTUIT.COM CA ON 12-25 9296 RECURRING PURCHASE",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "Intuit QuickBooks Online",
+            "website": "CL.INTUIT.COM"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_006",
+          "posted_date": "2024-12-27",
+          "amount": 2775.64,
+          "description": "VENDOR PAY EARTHLY GOURMET",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "Earthly Gourmet"
+          }
+        },
+        {
+          "id": "txn_007",
+          "posted_date": "2024-12-30",
+          "amount": -9000.0,
+          "description": "WIRE TRANSFER - TELEPHONIC",
+          "status": "POSTED",
+          "channel": "WIRE"
+        },
+        {
+          "id": "txn_008",
+          "posted_date": "2024-12-30",
+          "amount": -357.0,
+          "description": "INST XFER PAYPAL",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_009",
+          "posted_date": "2024-12-31",
+          "amount": -162.75,
+          "description": "INST XFER PAYPAL",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_010",
+          "posted_date": "2024-12-31",
+          "amount": 6968.04,
+          "description": "PAYMENTS AMAZON.CXQ6RSHL7 30ECVU9EUX4UT44",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "Amazon"
+          }
+        },
+        {
+          "id": "txn_011",
+          "posted_date": "2025-01-02",
+          "amount": -1750.0,
+          "description": "INTERNET TRANSFER #694098 TO CHECKING ACCOUNT XXX-XXX-6516",
+          "status": "POSTED",
+          "channel": "INTERNAL_TRANSFER",
+          "reference": {
+            "trace_id": "694098"
+          }
+        },
+        {
+          "id": "txn_012",
+          "posted_date": "2025-01-02",
+          "effective_date": "2024-12-31",
+          "amount": -869.51,
+          "description": "VISA UNITED 01624472356 UNITED.COM TX ON 12-31 9296",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "United Airlines",
+            "website": "UNITED.COM"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_013",
+          "posted_date": "2025-01-02",
+          "effective_date": "2025-01-01",
+          "amount": -72.1,
+          "description": "VISA GOOGLE*GSUITE JUSTPANE CC GOOGLE.COM CA ON 01-01 9296",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "Google Workspace",
+            "website": "CC GOOGLE.COM"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_014",
+          "posted_date": "2025-01-02",
+          "amount": 82.13,
+          "description": "ORDER FAIRE WHOLESALE pay t9uax6tw3g",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "Faire Wholesale"
+          }
+        },
+        {
+          "id": "txn_015",
+          "posted_date": "2025-01-06",
+          "effective_date": "2025-01-04",
+          "amount": -1.1,
+          "description": "VISA IPOSTAL*STORAGE IPOSTAL1.COM NY ON 01-04 9296",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "iPostal",
+            "website": "IPOSTAL1.COM"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_016",
+          "posted_date": "2025-01-06",
+          "effective_date": "2025-01-04",
+          "amount": -34.94,
+          "description": "VISA OOMA,INC 888-711-6662 CA ON 01-04 9296 RECURRING PURCHASE",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "Ooma, Inc."
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_017",
+          "posted_date": "2025-01-07",
+          "amount": -971.06,
+          "description": "PURCHASE PHASE V OF FLORI JUST PANELA SOU",
+          "status": "POSTED",
+          "channel": "OTHER"
+        },
+        {
+          "id": "txn_018",
+          "posted_date": "2025-01-07",
+          "amount": -312.38,
+          "description": "INST XFER PAYPAL",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_019",
+          "posted_date": "2025-01-08",
+          "effective_date": "2025-01-07",
+          "amount": -48.0,
+          "description": "VISA SQSP* INV164428642 HTTPSSQUARESP NY ON 01-07 9296 RECURRING PURCHASE",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "Squarespace",
+            "website": "HTTPSSQUARESP"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_020",
+          "posted_date": "2025-01-14",
+          "amount": -501.57,
+          "description": "INST XFER PAYPAL",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_021",
+          "posted_date": "2025-01-14",
+          "amount": 1721.55,
+          "description": "PAYMENTS AMAZON.CPX2S9RJO 2RJQ61ZNOBZQQ8C",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "Amazon"
+          }
+        },
+        {
+          "id": "txn_022",
+          "posted_date": "2025-01-15",
+          "amount": -1750.0,
+          "description": "INTERNET TRANSFER #705073 TO CHECKING ACCOUNT XXX-XXX-6516",
+          "status": "POSTED",
+          "channel": "INTERNAL_TRANSFER",
+          "reference": {
+            "trace_id": "705073"
+          }
+        },
+        {
+          "id": "txn_023",
+          "posted_date": "2025-01-17",
+          "amount": -114.99,
+          "description": "INST XFER PAYPAL",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_024",
+          "posted_date": "2025-01-21",
+          "amount": -10000.0,
+          "description": "WIRE TRANSFER - TELEPHONIC",
+          "status": "POSTED",
+          "channel": "WIRE"
+        },
+        {
+          "id": "txn_025",
+          "posted_date": "2025-01-21",
+          "effective_date": "2025-01-18",
+          "amount": -15.0,
+          "description": "VISA CANVA* I04400-48994787 HTTPSCANVA.CO DE ON 01-18 9296 RECURRING PURCHASE",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "Canva",
+            "website": "HTTPSCANVA.CO"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_026",
+          "posted_date": "2025-01-21",
+          "amount": -589.58,
+          "description": "INST XFER PAYPAL",
+          "status": "POSTED",
+          "channel": "ACH",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_027",
+          "posted_date": "2025-01-21",
+          "amount": 1314.17,
+          "description": "INTERNET TRANSFER #165694 FROM CHECKING ACCOUNT XXX-XXX-6516",
+          "status": "POSTED",
+          "channel": "INTERNAL_TRANSFER",
+          "reference": {
+            "trace_id": "165694"
+          }
+        },
+        {
+          "id": "txn_028",
+          "posted_date": "2025-01-21",
+          "amount": 5000.0,
+          "description": "INTERNET TRANSFER #189662 FROM CHECKING ACCOUNT XXX-XXX-6516",
+          "status": "POSTED",
+          "channel": "INTERNAL_TRANSFER",
+          "reference": {
+            "trace_id": "189662"
+          }
+        },
+        {
+          "id": "txn_029",
+          "posted_date": "2025-01-22",
+          "effective_date": "2025-01-21",
+          "amount": -14.99,
+          "description": "VISA IPOSTAL*RENEWAL IPOSTAL1.COM NY ON 01-21 9296",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "iPostal",
+            "website": "IPOSTAL1.COM"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_030",
+          "posted_date": "2025-01-23",
+          "effective_date": "2025-01-22",
+          "amount": -59.0,
+          "description": "VISA SQSP* INV166457550 HTTPSSQUARESP NY ON 01-22 9296 RECURRING PURCHASE",
+          "status": "POSTED",
+          "channel": "CARD",
+          "merchant": {
+            "name": "Squarespace",
+            "website": "HTTPSSQUARESP"
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_031",
+          "posted_date": "2025-01-23",
+          "amount": -102.0,
+          "description": "ACTIVITY CHARGE",
+          "status": "POSTED",
+          "channel": "ADJUSTMENT",
+          "category": "FEE"
+        }
+      ],
+      "reconciliation": {
+        "tolerance": 0.01,
+        "issues": [],
+        "passed": true
+      }
+    }
+  ]
+}

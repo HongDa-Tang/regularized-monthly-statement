@@ -1,0 +1,606 @@
+{
+  "schema_version": "1.0.0",
+  "institution": {
+    "id": "fi_firstbank",
+    "name": "FirstBank",
+    "identifiers": {},
+    "country": "US"
+  },
+  "account": {
+    "id": "acct_7487",
+    "institution_id": "fi_firstbank",
+    "type": "DEPOSITORY",
+    "subtype": "SAFEKEEPING",
+    "currency": "USD",
+    "number_masked": "XXX-XXX-7487",
+    "holders": [
+      {
+        "name": "SOURCE SOUTH",
+        "role": "PRIMARY",
+        "address": {
+          "raw": "6676 GUNPARK DR STE D, BOULDER CO 80301-3352",
+          "line1": "6676 GUNPARK DR STE D",
+          "city": "BOULDER",
+          "region": "CO",
+          "postal_code": "80301-3352",
+          "country": "US"
+        }
+      }
+    ]
+  },
+  "statements": [
+    {
+      "id": "stmt_2025-02-21",
+      "period": {
+        "start": "2025-01-24",
+        "end": "2025-02-21",
+        "statement_date": "2025-02-21",
+        "page_count": 3
+      },
+      "balances": {
+        "opening": {
+          "amount": 1729.92,
+          "date": "2025-01-23"
+        },
+        "closing": {
+          "amount": 2117.29,
+          "date": "2025-02-21"
+        },
+        "minimum": {
+          "amount": 1691.81,
+          "date": "2025-01-27"
+        },
+        "average": {
+          "amount": 3971
+        },
+        "average_collected": {
+          "amount": 3971
+        }
+      },
+      "totals": {
+        "deposits": {
+          "count": 4,
+          "amount": 13311.49
+        },
+        "withdrawals": {
+          "count": 25,
+          "amount": 12924.12
+        },
+        "fees_total": {
+          "amount": 57.0
+        }
+      },
+      "fees": [
+        {
+          "code": "ACH_DEBITS",
+          "description": "ACH DEBITS",
+          "count": 9,
+          "unit_cost": 0.2,
+          "subtotal": 1.8,
+          "charged": 0,
+          "waived": true
+        },
+        {
+          "code": "ACH_CREDITS",
+          "description": "ACH CREDITS",
+          "count": 4,
+          "unit_cost": 0.2,
+          "subtotal": 0.8,
+          "charged": 0,
+          "waived": true
+        },
+        {
+          "code": "INTERNET_BILL_PAY",
+          "description": "INTERNET BILL PAY FEE",
+          "charged": 10.0,
+          "waived": false
+        },
+        {
+          "code": "WIRE_OUT_FOREIGN",
+          "description": "OUTGOING WIRE - FOREIGN",
+          "count": 1,
+          "unit_cost": 45.0,
+          "subtotal": 45.0,
+          "charged": 45.0,
+          "waived": false
+        },
+        {
+          "code": "BUSINESS_VISA",
+          "description": "FIRSTBANK BUSINESS VISA CARD",
+          "count": 1,
+          "unit_cost": 2.0,
+          "subtotal": 2.0,
+          "charged": 2.0,
+          "waived": false
+        }
+      ],
+      "daily_balances": [
+        {
+          "date": "2025-01-24",
+          "balance": 1729.92
+        },
+        {
+          "date": "2025-01-27",
+          "balance": 1691.81
+        },
+        {
+          "date": "2025-01-28",
+          "balance": 6637.61
+        },
+        {
+          "date": "2025-01-30",
+          "balance": 6532.61
+        },
+        {
+          "date": "2025-01-31",
+          "balance": 6462.61
+        },
+        {
+          "date": "2025-02-03",
+          "balance": 6389.41
+        },
+        {
+          "date": "2025-02-04",
+          "balance": 6193.1
+        },
+        {
+          "date": "2025-02-05",
+          "balance": 6157.66
+        },
+        {
+          "date": "2025-02-06",
+          "balance": 5651.62
+        },
+        {
+          "date": "2025-02-07",
+          "balance": 4810.24
+        },
+        {
+          "date": "2025-02-10",
+          "balance": 4750.07
+        },
+        {
+          "date": "2025-02-11",
+          "balance": 2531.1
+        },
+        {
+          "date": "2025-02-12",
+          "balance": 2432.1
+        },
+        {
+          "date": "2025-02-14",
+          "balance": 2354.67
+        },
+        {
+          "date": "2025-02-18",
+          "balance": 2189.29
+        },
+        {
+          "date": "2025-02-19",
+          "balance": 2174.29
+        },
+        {
+          "date": "2025-02-21",
+          "balance": 2117.29
+        }
+      ],
+      "transactions": [
+        {
+          "id": "txn_001",
+          "posted_date": "2025-01-27",
+          "amount": -2.2,
+          "description": "VISA IPOSTAL*STORAGE IPOSTAL1.COM NY ON 01-25 9296",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "iPostal Storage",
+            "location": {
+              "region": "NY",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_002",
+          "posted_date": "2025-01-27",
+          "amount": -67.51,
+          "description": "VISA INTUIT *QBooks Online CL.INTUIT.COM CA ON 01-25 9296 RECURRING PURCHASE",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Intuit QuickBooks Online",
+            "location": {
+              "region": "CA",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_003",
+          "posted_date": "2025-01-27",
+          "amount": -77.93,
+          "description": "VISA LinkedInPre *89038854 855-6535653 CA ON 01-26 9296 RECURRING PURCHASE",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "LinkedIn",
+            "location": {
+              "region": "CA",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_004",
+          "posted_date": "2025-01-27",
+          "amount": -21.0,
+          "description": "INST XFER PAYPAL",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_005",
+          "posted_date": "2025-01-28",
+          "amount": -280.88,
+          "description": "INST XFER PAYPAL",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_006",
+          "posted_date": "2025-01-30",
+          "amount": -105.0,
+          "description": "INST XFER PAYPAL",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_007",
+          "posted_date": "2025-01-31",
+          "amount": -70.0,
+          "description": "VISA CAPITAL CONVENTION CONT 877-335-3700 MA ON 01-30 9296",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Capital Convention",
+            "location": {
+              "region": "MA",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_008",
+          "posted_date": "2025-02-03",
+          "amount": -1.1,
+          "description": "VISA IPOSTAL*STORAGE IPOSTAL1.COM NY ON 02-01 9296",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "iPostal Storage",
+            "location": {
+              "region": "NY",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_009",
+          "posted_date": "2025-02-03",
+          "amount": -72.1,
+          "description": "VISA Google GSUITE_justpanel 650-2530000 CA ON 02-01 9296 RECURRING PURCHASE",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Google Workspace",
+            "location": {
+              "region": "CA",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_010",
+          "posted_date": "2025-02-04",
+          "amount": -1.95,
+          "description": "VISA IPOSTAL*CONSOLIDATEITE IPOSTAL1.COM NY ON 02-03 9296",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "iPostal",
+            "location": {
+              "region": "NY",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_011",
+          "posted_date": "2025-02-04",
+          "amount": -18.48,
+          "description": "VISA IPOSTAL*SHIPITEMS IPOSTAL1.COM NY ON 02-03 9296",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "iPostal Ship Items",
+            "location": {
+              "region": "NY",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_012",
+          "posted_date": "2025-02-04",
+          "amount": -175.88,
+          "description": "INST XFER PAYPAL",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_013",
+          "posted_date": "2025-02-05",
+          "amount": -35.44,
+          "description": "VISA OOMA,INC 888-711-6662 CA ON 02-04 9296 RECURRING PURCHASE",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Ooma",
+            "location": {
+              "region": "CA",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_014",
+          "posted_date": "2025-02-06",
+          "amount": -506.04,
+          "description": "VISA ULINE *SHIP SUPPLIES 800-295-5510 WI ON 02-05 9296",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Uline",
+            "location": {
+              "region": "WI",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_015",
+          "posted_date": "2025-02-07",
+          "amount": -691.38,
+          "description": "PURCHASE PHASE V OF FLORI JUST PANELA LLC",
+          "channel": "OTHER",
+          "status": "POSTED"
+        },
+        {
+          "id": "txn_016",
+          "posted_date": "2025-02-07",
+          "amount": -150.0,
+          "description": "INST XFER PAYPAL",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_017",
+          "posted_date": "2025-02-10",
+          "amount": -48.0,
+          "description": "VISA SQSP* INV168673774 SQUARESPACE.C NY ON 02-07 9296 RECURRING PURCHASE",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Squarespace",
+            "location": {
+              "region": "NY",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_018",
+          "posted_date": "2025-02-10",
+          "amount": -12.17,
+          "description": "INST XFER PAYPAL",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_019",
+          "posted_date": "2025-02-11",
+          "amount": -10000.0,
+          "description": "WIRE TRANSFER - TELEPHONIC",
+          "channel": "WIRE",
+          "status": "POSTED"
+        },
+        {
+          "id": "txn_020",
+          "posted_date": "2025-02-11",
+          "amount": -173.25,
+          "description": "INST XFER PAYPAL",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_021",
+          "posted_date": "2025-02-12",
+          "amount": -99.0,
+          "description": "VISA RANGEME.COM 4156464040 RANGEME.COM OH ON 02-12 9296 RECURRING PURCHASE",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "RangeMe",
+            "location": {
+              "region": "OH",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_022",
+          "posted_date": "2025-02-14",
+          "amount": -77.43,
+          "description": "VISA T-MOBILE STORE # 1SPY SAN DIEGO CA ON 02-13 9296",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "T-Mobile",
+            "location": {
+              "city": "SAN DIEGO",
+              "region": "CA",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_023",
+          "posted_date": "2025-02-18",
+          "amount": -165.38,
+          "description": "INST XFER PAYPAL",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "PayPal"
+          }
+        },
+        {
+          "id": "txn_024",
+          "posted_date": "2025-02-19",
+          "amount": -15.0,
+          "description": "VISA CANVA* I04431-72119981 CANVA.COM DE ON 02-18 9296 RECURRING PURCHASE",
+          "channel": "CARD",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Canva",
+            "location": {
+              "region": "DE",
+              "country": "US"
+            }
+          },
+          "reference": {
+            "card_last4": "9296"
+          }
+        },
+        {
+          "id": "txn_025",
+          "posted_date": "2025-02-21",
+          "amount": -57.0,
+          "description": "ACTIVITY CHARGE",
+          "channel": "ADJUSTMENT",
+          "category": "FEE",
+          "status": "POSTED"
+        },
+        {
+          "id": "txn_026",
+          "posted_date": "2025-01-27",
+          "amount": 130.53,
+          "description": "VENDOR PYM Pleasant Hill Gr",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Pleasant Hill Growers"
+          }
+        },
+        {
+          "id": "txn_027",
+          "posted_date": "2025-01-28",
+          "amount": 5226.68,
+          "description": "PAYMENTS AMAZON.CBVYBZ58R 3SXAG2EAG8YJTKN",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Amazon"
+          }
+        },
+        {
+          "id": "txn_028",
+          "posted_date": "2025-02-11",
+          "amount": 4.65,
+          "description": "PAYMENTS AMAZON.C5NCKO0GC 1H4GORBLU87OOA9",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Amazon"
+          }
+        },
+        {
+          "id": "txn_029",
+          "posted_date": "2025-02-11",
+          "amount": 7949.63,
+          "description": "PAYMENTS AMAZON.CRNT0VCUV 6WI4PX6X2XUCI8R",
+          "channel": "ACH",
+          "status": "POSTED",
+          "merchant": {
+            "name": "Amazon"
+          }
+        }
+      ],
+      "reconciliation": {
+        "tolerance": 0.01,
+        "issues": [],
+        "passed": true
+      }
+    }
+  ]
+}
