@@ -1,7 +1,7 @@
 #!/bin/bash
 # tjq-fanout — generic M-input → N-output wrapper for tjq with lineage.
 #
-# Conforms to the tracing tools-spec CLI contract (--input DIR --output DIR).
+# Conforms to the evtrace tools-spec CLI contract (--input DIR --output DIR).
 # Runs a jq filter via tjq that produces {filename, filedata} objects,
 # splits into per-file outputs, and splits the lineage accordingly.
 #
@@ -168,7 +168,7 @@ for fname in filenames:
 
 " "$trace_tmp" "$output_dir" "${filenames[@]}"
 
-# Write .tracing pointer at output root
-cat > "$output_dir/.tracing" << 'TRACING'
+# Write .evtrace pointer at output root
+cat > "$output_dir/.evtrace" << 'TRACING'
 {"pipeline":{"name":"tjq-fanout","locator":"path","stages":[{"name":"jq","reader":{"type":"json_path","pattern":"*.json"},"evidence":{"type":"item_to_item"}}]}}
 TRACING

@@ -4,7 +4,7 @@ Sample project demonstrating how [tjq](https://github.com/hongdatang/tjq) enable
 
 ## Context
 
-The [provenance](https://github.com/hongdatang/provenance) project aims to replace spreadsheet-based audits with a pipeline of tools, where every derived value is traceable back to its source — just as every spreadsheet cell exposes its formula. The [tracing](https://github.com/hongdatang/tracing) library provides the generic lineage query engine, answering *"where did this specific value come from?"* for any tool that emits a `lineage.json`.
+The [provenance](https://github.com/hongdatang/provenance) project aims to replace spreadsheet-based audits with a pipeline of tools, where every derived value is traceable back to its source — just as every spreadsheet cell exposes its formula. The [evtrace](https://github.com/hongdatang/evtrace) library provides the generic lineage query engine, answering *"where did this specific value come from?"* for any tool that emits a `lineage.json`.
 
 This project is a concrete sample of **UC-D (computation tracing)** from that system: a jq filter that reads multiple input files, performs Excel-like reshuffling and aggregation (pooling transactions across overlapping date ranges, recomputing totals), and produces multiple output files — with tjq recording the lineage of every output field automatically.
 
@@ -30,7 +30,7 @@ PDF → hybrid-ocr → .txt → LLM extraction → {month}-ish-statement.json
                                     annual.json
 ```
 
-Each node is independently traceable via its own `lineage.json`. The tracing library stitches them into one walkable graph at query time.
+Each node is independently traceable via its own `lineage.json`. The evtrace library stitches them into one walkable graph at query time.
 
 ## The computation
 
@@ -45,14 +45,14 @@ This is the kind of work that would traditionally live in a spreadsheet — grou
 
 ## Tracing the output
 
-After running the pipeline, every field in every output file can be traced back to its source using the [tracing](https://github.com/hongdatang/tracing) CLI:
+After running the pipeline, every field in every output file can be traced back to its source using the [evtrace](https://github.com/hongdatang/evtrace) CLI:
 
 ```bash
 # Generate output with lineage
 TJQ=/path/to/tjq ./tjq-fanout --input input --output tjq-fanout-output -f monthly-traced.jq
 
 # Query: where did this amount come from?
-python -m tracing tjq-fanout-output \
+python -m evtrace tjq-fanout-output \
   --location '2025-01.json#/statements/0/transactions/0/amount'
 ```
 
@@ -77,7 +77,7 @@ Each entry in `artifacts/lineage.json` records:
 - **inputs** — source file, JSON Pointer, and value at compute time
 - **function** — the jq expression that produced the value
 
-The output directory also contains a `.tracing` descriptor file, which the tracing CLI reads to discover the pipeline configuration without needing a `--pipeline` flag.
+The output directory also contains a `.evtrace` descriptor file, which the evtrace CLI reads to discover the pipeline configuration without needing a `--pipeline` flag.
 
 ## Usage
 
@@ -95,12 +95,12 @@ TJQ=/path/to/tjq ./tjq-fanout --input input --output <output-dir> -f monthly-tra
 | File | Purpose |
 |---|---|
 | `monthly-traced.jq` | jq filter: pools inputs, partitions by calendar month, emits `{filename, filedata}` per month |
-| `tjq-fanout` | General-purpose M-input → N-output wrapper for tjq; conforms to tracing tool protocol |
+| `tjq-fanout` | General-purpose M-input → N-output wrapper for tjq; conforms to evtrace tool protocol |
 | `input/` | Source bank statements (irregular date ranges) |
 
 ## tjq-fanout
 
-A general-purpose wrapper that bridges tjq (which writes a single output stream) to the tracing tool protocol (`--input <dir> --output <dir>`).
+A general-purpose wrapper that bridges tjq (which writes a single output stream) to the evtrace tool protocol (`--input <dir> --output <dir>`).
 
 **Contract:** the jq filter must emit one JSON object per output file:
 
@@ -113,7 +113,7 @@ A general-purpose wrapper that bridges tjq (which writes a single output stream)
 1. Runs tjq with `--trace-dir` to capture lineage, producing `{filename, filedata}` objects.
 2. Splits each object into `$output_dir/$filename` containing only `.filedata`.
 3. Rewrites lineage: groups entries by output index, discards `/filename` entries, strips the `/filedata` prefix, computes per-file SHA-256 hashes.
-4. Writes `artifacts/lineage.json` and `.tracing` in the output directory.
+4. Writes `artifacts/lineage.json` and `.evtrace` in the output directory.
 
 ## Input/output format
 
